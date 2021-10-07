@@ -1,0 +1,55 @@
+
+.profileImg{
+    width: 50px;
+    height: 50px;
+}
+.otherImg{
+    width: 40px;
+    height: 40px;
+}
+.active{
+    font-size: 10px;
+}
+.card{
+    border: none;
+    border-radius: 19px 19px 0px 0px !important;
+}
+.scroll{
+    overflow-y: auto;
+    height: 400px;    
+}
+.scroll::-webkit-scrollbar{
+    width: 0px;
+}
+.textarea::-webkit-scrollbar{
+    width: 0px;
+}
+.chatHead{
+    border: none !important;
+    border-top-left-radius: 19px !important;
+    border-top-right-radius: 19px !important;
+    border-bottom: 1px solid rgb(219, 219, 219) !important;
+    
+}
+
+.incoming{
+    border: none;
+    border-radius: 10px 10px 10px 0px;
+}
+
+.outcoming{
+    border: none;
+    border-radius: 10px 10px  0px 10px;
+}
+.sendBtn{
+    transition: 1s all ease-in;
+}
+.sendBtn i{
+    transition: 1s all ease;
+}
+.sendBtn:hover.sendBtn i{
+    transform: translateX(3px);
+}
+.sendBtn:active{
+    transform: scale(0.9) !important;
+}
