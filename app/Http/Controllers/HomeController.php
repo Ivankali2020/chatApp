@@ -74,12 +74,12 @@ class HomeController extends Controller
                                                          //        $dir = "/public/profile/";
                                                      //        $newImg->save($dir.$newName);
                                                      //        Storage::putFileAs($dir,$newImg,$newName);
-         $files = scandir(public_path('image/'));
-         foreach ($files as $file){
-             if($file != '.' && $file != '..' && $file != $newName && $file != 'user.png'){
-                 File::delete(public_path('image/'.$file));
-             }
-         }
+        //  $files = scandir(public_path('image/'));
+        //  foreach ($files as $file){
+        //      if($file != '.' && $file != '..' && $file != $newName && $file != 'user.png'){
+        //          File::delete(public_path('image/'.$file));
+        //      }
+        //  }
 
          return redirect()->back();
     }

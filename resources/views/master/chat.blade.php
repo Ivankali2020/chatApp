@@ -1,4 +1,5 @@
 @extends('master.master')
+@section('title','chating')
 
 @section('content')
 <div class="container">
@@ -28,7 +29,7 @@
                     </div>
                     
                 </div>
-              <div class="card-body pt-0 scroll position-relative  ">
+              <div class="card-body pt-0 scroll position-relative " id="scrollBar">
                     <div class="message d-flex flex-column ">
                    
                         <!-- //receive message  -->
@@ -80,6 +81,8 @@
 
     let receiver = '{{ $auth->id }}';
     let sender = '{{ $user->id }}';
+    let scrollBar = document.getElementById('scrollBar');
+
     $('.sendBtn').click(function(e){
         e.preventDefault();
         
@@ -142,14 +145,33 @@
                     }
                   
                 })
+
+                //scroll butoon 
+
+                if(!scrollBar.classList.contains('scrollActive')){
+                    scrollButton();
+                }
             })
-       
+            
     }
     loop();
-    // setInterval(()=>{
-    //     loop();
-    // },500)
+    setInterval(()=>{
+        loop();
+    },500)
 
+    $("#scrollBar").mouseenter(function(){
+        $('#scrollBar').addClass('scrollActive');
+        console.log(this);
+    })
+
+    $("#scrollBar").mouseleave(function(){
+        $('#scrollBar').removeClass('scrollActive');
+        console.log(this)
+    })
+    function scrollButton(){
+       scrollBar.scrollTop = scrollBar.scrollHeight;
+       
+    }
 
 
 </script>

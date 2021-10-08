@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,6 +69,64 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center vh-100  ">
+        <div class="col-12 col-md-8 col-xl-6   ">
+            <div class="card shadow ">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <h4 class="text-uppercase text-center" >Register Form</h4>
+                        <hr>
+                                                        
+                        <div class="form-group">
+                            <label for="">First Name</label>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+    
+                        <div class="form-group mb-3">
+                            <label for="">Email</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                        <div class="form-group mb-3 position-relative">
+                            <label for="">Password</label>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            <i class="fa fa-eye position-absolute mt-1  top-50 " style="right: 10px; cursor: pointer;" id="eye"></i>
+                        </div>
+                        <div class="form-group mb-3 position-relative">
+                            <label for="">Confirm Password</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <i class="fa fa-eye position-absolute mt-1  top-50 " style="right: 10px; cursor: pointer;" id="eye"></i>
+                        </div>
+                        <div class="form-group mb-3 ">    
+                            <button class="btn btn-dark ">Register</button>
+                            <a href="{{ route('login')}}" class="btn btn-outline-dark text-decoration-none">Login Now?</a>
+                        </div>
+                   </form>
                 </div>
             </div>
         </div>

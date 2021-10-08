@@ -1,6 +1,6 @@
 @extends('master.master')
 
-
+@section('title','chatlist')
 @section('content')
 
 <div class="container">
@@ -72,7 +72,7 @@
 @section('script')
     <script>
         let allUser = @json($all);
-
+        let auth = "{{$man->id}}";
         $('.search').keypress(function(){
             let value = $('.search').val().toLowerCase(); 
             let url = '{{ route('home') }}';
@@ -102,7 +102,7 @@
         function userLoop(x){
             $('.box').html('');             
                 x.map(el=>{
-                    if(el.id != '{{$man->id}}'){
+                    if(el.id != auth ){
                     $('.box').append(`
                     <a href="/chating/${el.id}" class="text-decoration-none text-dark ">
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -110,13 +110,14 @@
                                     <img src="/image/${el.photo}" class="border rounded-circle chatlistImg  me-2" alt="">
                                     <div class="d-flex flex-column ">
                                     <span class="fs-6 mb-0 text-capitalize ">${el.name}</span>
-                                    <span class="fw-light  fs-6 text-muted">
-                                    ${el.message[el.message.length-1].description}
+                                    <span class="fw-light message  fs-6 text-muted">
+                                        ${ el.message.length > 0 ? (el.message[el.message.length-1].receiver == auth ? 'You :' + el.message[el.message.length-1].description : 'no messages ' ) : 'no' } 
+                                      
                                     </span>
-                                </div>
+                                </div>  
                             </div>
                             <div class="">
-                                <i class="fa fa-circle active ${el.active ==1  ? 'text-success' : 'text-muted'} mx-3"></i>
+                                <i class="fa fa-circle active ${el.active == 1  ? 'text-success' : 'text-muted'} mx-3"></i>
                             </div>
                         </div>
                     </a>
@@ -127,6 +128,13 @@
             })
         }
 
-        userLoop(allUser);
+        userLoop(allUser);  
+ 
     </script>
 @endsection
+
+
+
+ {{-- ${el.message[el.message.length-1].description} --}}
+
+ {{-- ${ (el.message[el.message.length-1].receiver == auth || el.message.length > 0 ) ? 'You :' + el.message[el.message.length-1].description : 'no messages '  } --}}
