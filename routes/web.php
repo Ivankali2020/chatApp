@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/chating/{user}', 'HomeController@chat')->name('chating');
 Route::post('/goaway', 'HomeController@goAway')->name('chat.goaway');
+Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::post('/changeImg', 'HomeController@ChangeImg')->name('changeImg');
 
 
 Route::resource('message', MessageController::class);

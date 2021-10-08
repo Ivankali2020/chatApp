@@ -12,12 +12,14 @@ class MessageController extends Controller
     public function all(Request $request)
     {   
         // return $request;
-
+        $sender = $request->sender;
+        $receiver = $request->receiver;
         // $messages = Message::where('sender',$request->sender)->where('receiver',$request->receiver)->Where('sender',$request->sender)->Where('receiver',$request->receiver)->get();
         // $receive = Message::where('receiver',$request->sender)->where('sender',$request->receiver)->get();
-        
-        $all =  DB::table('messages')->orWhere('receiver',$request->receiver)->orWhere('sender',$request->sender)
-                ->orWhere('receiver',$request->sender)->orWhere('sender',$request->receiver)->get();
+        $all =  DB::table('messages')->where('receiver',$receiver)->where('sender',$sender)
+                ->orWhere(function($query) use($sender,$receiver){
+                    $query->where('receiver',$sender)->where('sender',$receiver);
+                })->get();
 
         return $all;
         // return response()->json(['r'=>$messages,'s'=>$receive]);
@@ -70,7 +72,7 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        
     }
 
     /**

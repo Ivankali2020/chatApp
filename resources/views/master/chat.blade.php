@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row ">
-        <div class="col-12 col-md-4 m-auto mt-5 ">
+        <div class="col-12 col-md-6  col-xl-4 m-auto mt-5 ">
             <div class="card shadow-sm border border-0 ">
                 <div class="card-header bg-white chatHead shadow-sm ">
                     <div class="d-flex justify-content-between align-items-center">
@@ -12,7 +12,9 @@
                             <a href="{{ route('home') }}" class="text-dark">
                                 <i class="fa fa-arrow-left fs-6 me-3"></i>
                             </a>
-                            <img src="/image/{{ $auth->photo }}" class="border rounded-circle profileImg  me-2" alt="">
+                           
+                                <img src="/image/{{ $user->photo }}" class="border rounded-circle profileImg  me-2" alt="">
+                            
                             <div class="d-flex flex-column ">
                                 <span class="fs-5 lead text-capitalize  mb-0 ">{{ $user->name }}</span>
                                 @if ($user->active)
@@ -118,22 +120,22 @@
                     console.log(sender,receiver)
                     if(el.sender == sender){
                         $('.message').append(`
-                          <div class="outcoming p-2 bg-light w-75 align-self-end mt-3 ">
-                            <p class="mb-0" style="text-align: justify;">
+                          <div class="text-end  w-75 align-self-end mt-3 ">
+                            <p class="mb-0 text-end p-2  bg-dark text-white d-inline outcoming " >
                                 ${el.description}                                
                             </p>
                           </div> 
                         `)
                     }else {
                         $('.message').append(`
-                        <div class="mt-3 d-flex align-items-end ">
-                            <div class="align-items-end">                                   
+                        <div class="mt-3 d-flex ">
+                            <div class=" ">                                   
                                 <img src="/image/{{ $user->photo }}" class="border rounded-circle otherImg  me-2" alt="">
                             </div>
-                            <div class="incoming p-2 bg-light w-75 align-self-end mt-3 ">
-                                <p class="mb-0" style="text-align: justify;">
-                                   ${el.description}
-                                </p>
+                            <div class=" w-75 align-self-end mt-3 ">
+                                <p class="mb-0 text-end p-2  bg-light d-inline incoming border border-muted   " >
+                                ${el.description}                                
+                            </p>
                             </div>
                         </div> 
                         `)

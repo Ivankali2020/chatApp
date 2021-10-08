@@ -4,6 +4,11 @@
     height: 50px;
 }
 .otherImg{
+    width: 30px;
+    height: 30px;
+    margin-bottom: -56px;
+}
+.chatlistImg{
     width: 40px;
     height: 40px;
 }

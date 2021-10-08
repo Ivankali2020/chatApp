@@ -11,7 +11,9 @@
                     <div class="d-flex justify-content-between align-items-center">
 
                         <div class="d-flex align-items-center">
-                            <img src="/image/{{ $man->photo }}" class="border rounded-circle profileImg  me-2" alt="">
+                            <a href="{{ route('profile') }}" class="">
+                                <img src="/image/{{ $man->photo }}" class="border rounded-circle profileImg  me-2" alt="">
+                            </a>
                             <div class="d-flex flex-column ">
                                 <span class="fs-5 lead  text-capitalize mb-0 ">{{ $man->name }}</span>
                                 @if ($man->active)
@@ -105,10 +107,12 @@
                     <a href="/chating/${el.id}" class="text-decoration-none text-dark ">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div class="d-flex align-items-center">
-                                    <img src="/image/${el.photo}" class="border rounded-circle otherImg  me-2" alt="">
+                                    <img src="/image/${el.photo}" class="border rounded-circle chatlistImg  me-2" alt="">
                                     <div class="d-flex flex-column ">
                                     <span class="fs-6 mb-0 text-capitalize ">${el.name}</span>
-                                    <span class="fw-light  fs-6 text-muted">Hello How are You?</span>
+                                    <span class="fw-light  fs-6 text-muted">
+                                    ${el.message[el.message.length-1].description}
+                                    </span>
                                 </div>
                             </div>
                             <div class="">
